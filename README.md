@@ -1,4 +1,4 @@
-# Agent Course
+﻿# Agent Course
 
 > *Nobody asks for your certificate. They ask "what did you ship?"*
 
@@ -8,9 +8,9 @@ An offline desktop app that teaches practical agent engineering in short weekly 
 
 | Track | Modules | What it covers |
 |---|---|---|
-| **Track 0: Math Foundations** (M1–M4) | 4 | Vectors and matrices, probability, derivatives, gradients |
-| **Track A: Foundations** (A1–A18) | 18 | How LLMs work (tokens, transformers, embeddings, sampling, prefill/decode, local inference), building AI apps, prompting, RAG vs. agents, fine-tuning, hallucination, multimodal, evals, labeling, safety, working in AI |
-| **Track B: Ship Agents** (B1–B30) | 30 | Shipping, evals, MCP, tools, memory, model selection and routing, cost, caching, durability, schemas, sandboxing, prompt injection, secrets/PII, approvals, tracing, debugging, CI gates, canaries, fallbacks, streaming, fine-tuning, prompt versioning, metrics, README, demo, postmortems |
+| **Track 0: Math Foundations** (M1â€“M4) | 4 | Vectors and matrices, probability, derivatives, gradients |
+| **Track A: Foundations** (A1â€“A18) | 18 | How LLMs work (tokens, transformers, embeddings, sampling, prefill/decode, local inference), building AI apps, prompting, RAG vs. agents, fine-tuning, hallucination, multimodal, evals, labeling, safety, working in AI |
+| **Track B: Ship Agents** (B1â€“B30) | 30 | Shipping, evals, MCP, tools, memory, model selection and routing, cost, caching, durability, schemas, sandboxing, prompt injection, secrets/PII, approvals, tracing, debugging, CI gates, canaries, fallbacks, streaming, fine-tuning, prompt versioning, metrics, README, demo, postmortems |
 
 All modules are unlocked, so you can go in any order. Suggested pace: one or two modules a week, and apply each one to something you're building.
 
@@ -50,10 +50,22 @@ agent-course.exe --open b-mcp-server     # open straight to a module by id
 cargo test --release                     # unit tests: scoring/completion rule + content integrity
 ```
 
+## Run it (macOS)
+
+Install Rust from [rustup.rs](https://rustup.rs), then:
+
+```bash
+git clone https://github.com/chasestory/agent-course.git
+cd agent-course
+cargo run --release
+```
+
+The release binary is at `target/release/agent-course`. Progress is saved under Application Support (`~/Library/Application Support/agent-course/progress.json`), or set `AGENT_COURSE_PROGRESS` to override. The Windows `run.ps1` / `build.ps1` scripts are Windows-only; on Mac use `cargo` as above.
+
 ## How it works
 
 - **Home:** overall progress (X/52), a **Continue** button for the next incomplete module, and every track with per-module status (Not started / Best % / Complete).
-- **Module page:** lesson → "Watch & read" links (click to open in your default browser) → quiz. Left sidebar shows every module with a status dot for quick navigation. Previous/Next buttons at the top and bottom.
+- **Module page:** lesson â†’ "Watch & read" links (click to open in your default browser) â†’ quiz. Left sidebar shows every module with a status dot for quick navigation. Previous/Next buttons at the top and bottom.
 - **Quiz:** click an answer to lock it in. You immediately see correct/incorrect plus an explanation. When all questions are answered you get your score.
 
 ### Completion rule
@@ -62,7 +74,7 @@ cargo test --release                     # unit tests: scoring/completion rule +
 
 ### Where progress is stored
 
-`%APPDATA%\agent-course\progress.json` (for example `C:\Users\powmi\AppData\Roaming\agent-course\progress.json`). It's plain JSON keyed by module id, so reordering or renaming modules keeps your progress as long as ids stay the same. To reset, use **Reset all progress…** at the bottom of the home screen, or delete the file. Override the location with the `AGENT_COURSE_PROGRESS` env var.
+`%APPDATA%\agent-course\progress.json` (for example `C:\Users\powmi\AppData\Roaming\agent-course\progress.json`). It's plain JSON keyed by module id, so reordering or renaming modules keeps your progress as long as ids stay the same. To reset, use **Reset all progressâ€¦** at the bottom of the home screen, or delete the file. Override the location with the `AGENT_COURSE_PROGRESS` env var.
 
 ## Editing content
 
@@ -83,8 +95,8 @@ Each module looks like this:
   "title": "Build an MCP server from scratch",
   "summary": "One-line summary shown on the home screen.",
   "lesson": ["## Section heading", "Paragraph text with **bold** and `code`.", "- bullet", "1. numbered"],
-  "links": [{ "kind": "video", "title": "…", "url": "https://…" },
-            { "kind": "doc",   "title": "…", "url": "https://…" }],
+  "links": [{ "kind": "video", "title": "â€¦", "url": "https://â€¦" },
+            { "kind": "doc",   "title": "â€¦", "url": "https://â€¦" }],
   "quiz": [{ "q": "Question?", "choices": ["A", "B", "C"], "answer": 1, "explain": "Why B is right and why the others aren't." }]
 }
 ```
